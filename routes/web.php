@@ -22,6 +22,7 @@ Route::view('/pelatihan', 'pelatihan');
 Route::view('/panduan', 'panduan');
 Route::view('/login', 'login');
 Route::view('/registrasi', 'regis');
+Route::view('/contact', 'contact');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

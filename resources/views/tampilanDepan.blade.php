@@ -3,7 +3,7 @@
 @section('content')
 <section class="slick-slideshow">
     <div class="slick-custom">
-        <img src="{{ asset('depan/images/PANORAMA GEDUNG MTH.jpg') }}" class="img-fluid" alt="">
+        <img src="https://diklat.rspaldrramelan.com/assets/gambar/user/banner.svg" class="img-fluid" alt="">
 
         <div class="slick-bottom">
             <div class="container">
@@ -58,7 +58,7 @@
 
 </section>
 
-<section class="about section-padding">
+<!-- <section class="about section-padding">
     <div class="container">
         <div class="row">
 
@@ -184,6 +184,105 @@
                     </div>
 
                 </div>
+            </div>
+
+        </div>
+    </div>
+</section> -->
+
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="mb-5">Pelatihan Bangdiklat</h2>
+            </div>
+
+            <div class="col-lg-6 col-12 mb-3 card">
+                <div class="product-thumb col-lg-12">
+                    <div class="col d-flex justify-content-center col-lg-4">
+                        <a href="product-detail.html">
+                            <img src="https://diklat.rspaldrramelan.com/assets/sistem/pelatihan/flyer/WhatsApp%20Image%202023-08-21%20at%2014.30.28.jpeg" class="img-fluid product-image" alt="">
+                        </a>
+                    </div>
+                    <!-- <div class="product-top d-flex">
+                        <span class="product-alert me-auto">New Arrival</span>
+
+                        <a href="#" class="bi-heart-fill product-icon"></a>
+                    </div> -->
+
+                    <div class="col-lg-8 product-info d-flex">
+                        <div>
+                            <h5 class="product-title col-8">
+                                Pelatihan Prinsip – Prinsip PPI Pada Pelayanan di RSPAL dr. Ramelan Tahun 2023 (Gel. 4)
+                            </h5>
+
+                            <p class="product-p text-success">Dibuka</p>
+                            <p class="product-p text-success">In House Training</p>
+                            <p class="product-p">Jadwal : 29 Februari 2024</p>
+                            <div class="row">
+                                <p class="product-p">Kouta In : 450</p>
+                                <p class="product-p">Kouta Ex : 50</p>
+                            </div>
+                        </div>
+
+                        <small class="product-price text-muted ms-auto mt-auto mb-5">$25</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-12 mb-3">
+                <div class="product-thumb">
+                    <a href="product-detail.html">
+                        <img src="{{ asset('depan/images/product/jordan-nix-CkCUvwMXAac-unsplash.jpeg') }}" class="img-fluid product-image" alt="">
+                    </a>
+
+                    <div class="product-top d-flex">
+                        <span class="product-alert">Low Price</span>
+
+                        <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
+                    </div>
+
+                    <div class="product-info d-flex">
+                        <div>
+                            <h5 class="product-title mb-0">
+                                <a href="product-detail.html" class="product-title-link">Fashion Set</a>
+                            </h5>
+
+                            <p class="product-p">Costume Package</p>
+                        </div>
+
+                        <small class="product-price text-muted ms-auto mt-auto mb-5">$35</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-12">
+                <div class="product-thumb">
+                    <a href="product-detail.html">
+                        <img src="{{ asset('depan/images/product/nature-zen-3Dn1BZZv3m8-unsplash.jpeg') }}" class="img-fluid product-image" alt="">
+                    </a>
+
+                    <div class="product-top d-flex">
+                        <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
+                    </div>
+
+                    <div class="product-info d-flex">
+                        <div>
+                            <h5 class="product-title mb-0">
+                                <a href="product-detail.html" class="product-title-link">Juice Drinks</a>
+                            </h5>
+
+                            <p class="product-p">Nature made another world</p>
+                        </div>
+
+                        <small class="product-price text-muted ms-auto mt-auto mb-5">$45</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center">
+                <a href="products.html" class="view-all">View All Products</a>
             </div>
 
         </div>

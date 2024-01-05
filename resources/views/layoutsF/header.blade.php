@@ -34,14 +34,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Login</a>
+                    <a class="nav-link" href="/contact">Contact</a>
                 </li>
             </ul>
 
             <div class="d-none d-lg-block">
                 <a href="/login" class="bi-person custom-icon me-3"></a>
-
-                <a href="product-detail.html" class="bi-bag custom-icon"></a>
             </div>
         </div>
     </div>
