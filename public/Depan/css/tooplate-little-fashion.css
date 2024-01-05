@@ -11,26 +11,26 @@ https://www.tooplate.com/view/2127-little-fashion
   CUSTOM PROPERTIES ( VARIABLES )             
 -----------------------------------------*/
 :root {
-  --white-color:                #FFFFFF;
-  --primary-color:              #FF4400;
-  --section-bg-color:           #f0f8ff;
-  --dark-color:                 #000000;
-  --grey-color:                 #d0d1d1;
-  --p-color:                    #717275;
+  --white-color: #FFFFFF;
+  --primary-color: #FF4400;
+  --section-bg-color: #f0f8ff;
+  --dark-color: #000000;
+  --grey-color: #d0d1d1;
+  --p-color: #717275;
 
-  --body-font-family:           'Inter', sans-serif;
+  --body-font-family: 'Inter', sans-serif;
 
-  --h5-font-size:               24px;
-  --p-font-size:                20px;
-  --copyright-text-font-size:   16px;
-  --product-link-font-size:     14px;
-  --custom-link-font-size:      12px;
+  --h5-font-size: 24px;
+  --p-font-size: 20px;
+  --copyright-text-font-size: 16px;
+  --product-link-font-size: 14px;
+  --custom-link-font-size: 12px;
 
-  --font-weight-thin:           100;
-  --font-weight-light:          300;
-  --font-weight-normal:         400;
-  --font-weight-bold:           700;
-  --font-weight-black:          900;
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 }
 
 body,
@@ -49,9 +49,9 @@ html {
 }
 
 body {
-    background: var(--white-color);
-    font-family: var(--body-font-family);    
-    position: relative;
+  background: var(--white-color);
+  font-family: var(--body-font-family);
+  position: relative;
 }
 
 /*---------------------------------------
@@ -112,7 +112,7 @@ p {
   font-weight: var(--font-weight-light);
 }
 
-a, 
+a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
@@ -211,7 +211,9 @@ strong {
 }
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /*---------------------------------------
@@ -338,8 +340,10 @@ strong {
   transition: transform 300ms linear;
 }
 
-.navbar span, h2 span, h4 span {
-	color: var(--primary-color);
+.navbar span,
+h2 span,
+h4 span {
+  color: var(--primary-color);
 }
 
 .navbar.headroom--not-top {
@@ -392,7 +396,7 @@ strong {
   transform: translateY(10px);
 }
 
-.navbar .nav-link.active::after, 
+.navbar .nav-link.active::after,
 .navbar .nav-link:hover::after {
   opacity: 1;
   -webkit-transform: translateY(0px);
@@ -405,7 +409,7 @@ strong {
   color: var(--primary-color);
 }
 
-.nav-link:focus, 
+.nav-link:focus,
 .nav-link:hover {
   color: var(--p-color);
 }
@@ -744,7 +748,7 @@ section {
 }
 
 .about .nav-pills .nav-link:hover,
-.about .nav-pills .nav-link.active, 
+.about .nav-pills .nav-link.active,
 .about .nav-pills .show>.nav-link {
   background: transparent;
   border-left-color: var(--primary-color);
@@ -777,7 +781,7 @@ button:focus:not(:focus-visible) {
 }
 
 .accordion-body {
-  border-top: 1px solid rgba(0,0,0,.125);
+  border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
 .accordion-button {
@@ -898,7 +902,7 @@ button:focus:not(:focus-visible) {
 }
 
 .product-thumb:hover .product-image {
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
 }
 
 .product-top {
@@ -991,8 +995,8 @@ button:focus:not(:focus-visible) {
 -----------------------------------------*/
 .site-footer {
   background: var(--dark-color);
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .footer-menu {
@@ -1179,4 +1183,3 @@ button:focus:not(:focus-visible) {
     bottom: 0;
   }
 }
-

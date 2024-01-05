@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('tampilanDepan');
 });
+
+Route::view('/pelatihan', 'pelatihan');
+Route::view('/panduan', 'panduan');
+Route::view('/login', 'login');
+Route::view('/registrasi', 'regis');
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
