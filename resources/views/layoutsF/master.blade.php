@@ -86,7 +86,18 @@ https://www.tooplate.com/view/2127-little-fashion
     <script src="{{ asset('depan/js/jQuery.headroom.js') }}"></script>
     <script src="{{ asset('depan/js/slick.min.js') }}"></script>
     <script src="{{ asset('depan/js/custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    @if($message = Session::get('failed'))
+    <script>
+        Swal.fire('{{ $message }}');
+    </script>
+    @endif
+    @if($message = Session::get('success'))
+    <script>
+        Swal.fire('{{ $message }}');
+    </script>
+    @endif
 </body>
 
 </html>

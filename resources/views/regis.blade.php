@@ -28,10 +28,15 @@
 
                 <div class="row">
                     <div class="col-lg-8 col-11 mx-auto">
-                        <form role="form" method="post">
+                        <form role="form" action="{{route('register-proses')}}" method="post">
+                            @csrf
+                            <div class="form-floating mb-4 p-0">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="name address" required>
 
+                                <label for="name">name address</label>
+                            </div>
                             <div class="form-floating">
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required>
 
                                 <label for="email">Email address</label>
                             </div>
@@ -44,17 +49,17 @@
                                 <p class="text-center">* shall include 0-9 a-z A-Z in 4 to 10 characters</p>
                             </div>
 
-                            <div class="form-floating">
+                            <!-- <div class="form-floating">
                                 <input type="password" name="confirm_password" id="confirm_password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required>
 
                                 <label for="confirm_password">Password Confirmation</label>
-                            </div>
+                            </div> -->
 
                             <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
                                 Create account
                             </button>
 
-                            <p class="text-center">Already have an account? Please <a href="sign-in.html">Sign In</a></p>
+                            <p class="text-center">Already have an account? Please <a href="{{route('login')}}">Sign In</a></p>
 
                         </form>
                     </div>

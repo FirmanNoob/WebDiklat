@@ -10,4 +10,16 @@ class DashboardController extends Controller
     {
         return view('admin.index');
     }
+    public function sertifikat()
+    {
+        return view('admin.sertifikat');
+    }
+    public function pelatihan()
+    {
+        return view('admin.pelatihan');
+    }
+    public function pelatihan_tambah()
+    {
+        return view('admin.tambahPelatihan');
+    }
 }

@@ -55,6 +55,10 @@
 
     <link rel="stylesheet" href="{{ asset('belakang/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -127,5 +131,14 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Datatables -->
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
   </body>
 </html>
