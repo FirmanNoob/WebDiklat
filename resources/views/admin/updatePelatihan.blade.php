@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+    <h4 class="fw-bold py-3 mb-4">Update Pelatihan</h4>
     <div class="col-xxl">
         <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
@@ -10,14 +10,14 @@
                 <small class="text-muted float-end">Pelatihan Detail</small>
             </div>
             <div class="card-body">
-                <form action="{{ route('pelatihan.tambah-proses') }}" method="post" enctype="multipart/form-data">
+                <form action="/pelatihan/{{$data->id}}/update-proses" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama Pelatihan</label>
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span> -->
-                                <input type="text" class="form-control" name="nama_Pelatihan" id="basic-icon-default-fullname" placeholder="Nama Pelatihan" aria-label="Nama Pelatihan" aria-describedby="basic-icon-default-fullname2" />
+                                <input type="text" class="form-control" name="nama_Pelatihan" id="basic-icon-default-fullname" placeholder="Nama Pelatihan" aria-label="Nama Pelatihan" aria-describedby="basic-icon-default-fullname2" value="{{ $data->nama_Pelatihan }}" />
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span> -->
-                                <input type="text" id="basic-icon-default-company" name="lokasi" class="form-control" placeholder="Lokasi" aria-label="ACME Inc." aria-describedby="basic-icon-default-company2" />
+                                <input type="text" id="basic-icon-default-company" name="lokasi" class="form-control" placeholder="Lokasi" aria-label="ACME Inc." aria-describedby="basic-icon-default-company2" value="{{ $data->lokasi }}" />
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
-                                <input class="form-control" type="number" name="kouta" value="18" id="html5-number-input">
+                                <input class="form-control" type="number" name="kouta" value="{{ $data->kouta }}" id="html5-number-input">
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span> -->
-                                <textarea id="basic-icon-default-message" name="deskripsi" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                <textarea id="basic-icon-default-message" name="deskripsi" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $data->deskripsi }}</textarea>
                             </div>
                         </div>
                     </div>

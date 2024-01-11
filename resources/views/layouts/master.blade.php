@@ -134,7 +134,18 @@
 
     <!-- Datatables -->
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@if($message = Session::get('failed'))
+    <script>
+        Swal.fire('{{ $message }}');
+    </script>
+    @endif
+    @if($message = Session::get('success'))
+    <script>
+        Swal.fire('{{ $message }}');
+    </script>
+    @endif
 <script>
   $(document).ready( function () {
     $('#myTable').DataTable();

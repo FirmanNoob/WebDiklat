@@ -18,7 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
 
                 <li class="nav-item">
@@ -30,11 +33,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/panduan">Panduan</a>
+                    <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="/panduan">Panduan</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
                 </li>
             </ul>
 
