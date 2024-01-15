@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelatihan;
+use App\Models\User;
+use App\Models\userPelatihan;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,19 +17,66 @@ class DashboardController extends Controller
     {
         return view('admin.index');
     }
-    public function sertifikat()
+
+
+
+    public function pelatihanUser()
     {
-        return view('admin.sertifikat');
+        $user = auth()->user();
+        $data = Pelatihan::all();
+        return view('admin.pelatihanUser', compact('user', 'data'));
     }
+
+    public function createpelatihanUser(Request $request, $trainingId)
+    {
+        $user = auth()->user();
+
+        if (!$user->trainings->contains($trainingId)) {
+            $userTraining = new userPelatihan(['pelatihan_id' => $trainingId]);
+            $user->trainings()->save($userTraining);
+        }
+        return redirect()->route('dashboard')->with('success', 'Anda berhasil mengikuti pelatihan.');
+
+
+        // $request->request->add(['user_id', 'pelatihan_id' => auth()->user()->id]);
+        // User::create($request->all());
+        // return redirect('/dashboard');
+    }
+
     public function pelatihan()
     {
         $data_pelatihan = Pelatihan::all();
         return view('admin.pelatihan', ['data_pelatihan' => $data_pelatihan]);
     }
+
+
+    // public function tambahPelatihan($userId, $pelatihanId)
+    // {
+    //     // $userId = $request->input('user_id');
+    //     // $trainingId = $request->input('training_id');
+
+    //     $user = User::find($userId);
+    //     $pelatihan = Pelatihan::find($pelatihanId);
+
+    //     if (!$user || !$pelatihan) {
+    //         return response()->json(['message' => 'Pengguna atau pelatihan tidak ditemukan'], 404);
+    //     }
+
+    //     // Menambahkan pelatihan untuk pengguna
+    //     $user->trainings()->attach($pelatihan->id);
+
+    //     return response()->json(['message' => 'Pelatihan berhasil ditambahkan untuk pengguna'], 200);
+    // }
+
+
+
     public function pelatihan_tambah()
     {
         return view('admin.tambahPelatihan');
     }
+
+
+
     public function pelatihan_tambah_proses(Request $request)
     {
         $request->validate(
@@ -64,11 +113,17 @@ class DashboardController extends Controller
         Pelatihan::create($data);
         return redirect()->route('pelatihan')->with('success', 'Data Pelatihan Berhasil Ditambahkan');
     }
+
+
+
     public function pelatihan_update(Request $request, $id)
     {
         $data  = Pelatihan::find($id);
         return view('admin.updatePelatihan', compact('data'));
     }
+
+
+
     public function pelatihan_update_proses(Request $request, $id)
     {
         // $validator = Validator::make($request->all(), [
@@ -104,4 +159,11 @@ class DashboardController extends Controller
 
         // return view('admin.updatePelatihan');
     }
+
+
+    // public function pelatihanUser(Request $request)
+    // {
+    //     $request->request->add('');
+    // }
+
 }

@@ -78,4 +78,11 @@ class SesiController extends Controller
             return redirect()->route('login')->with('failed', 'Email atau Password salah')->withInput();
         }
     }
+
+    public function listUser()
+    {
+        $data = User::all();
+
+        return view('admin.user', compact('data'));
+    }
 }

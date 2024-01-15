@@ -53,21 +53,14 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        @if (auth()->user()->role=="operator")
-        <li class="menu-item {{ Request::is('sertifikat') ? 'active' : '' }}">
-            <a href="{{ route('sertifikat') }}" class="menu-link">
+
+        <li class="menu-item {{ Request::is('pelatihanUser') ? 'active' : '' }}">
+            <a href="{{ route('pelatihanUser') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Sertifikat</div>
+                <div data-i18n="Analytics">pelatihanUser</div>
             </a>
         </li>
-        @endif
-        <!-- <li class="menu-item {{ Request::is('pelatihan') ? 'active' : '' }}">
-            <a href="{{ route('pelatihan') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">pelatihan</div>
-            </a>
-        </li> -->
-
+        @if (auth()->user()->role=="operator")
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -86,24 +79,17 @@
                         <div data-i18n="Without navbar">Tambah Pelatihan</div>
                     </a>
                 </li>
-                <!-- <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
-                    </a>
-                </li> -->
             </ul>
+
+        </li>
+        <li class="menu-item {{ Request::is('listUser') ? 'active' : '' }}">
+            <a href="{{ route('listUser') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">listUser</div>
+            </a>
         </li>
 
+        @endif
         <!-- <li class="menu-item active">
             <a href="{{ route('logout') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>

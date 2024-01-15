@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Pelatihan;
+use App\Models\userPelatihan;
 
 class User extends Authenticatable
 {
@@ -42,5 +44,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'created_at' => 'datetime'
     ];
+
+    // public function pelatihan()
+    // {
+    //     return $this->belongsToMany(User::class, Pelatihan::class, 'user_pelatihan')->withTimestamps();
+    // }
+    public function trainings()
+    {
+        return $this->hasMany(userPelatihan::class);
+    }
 }

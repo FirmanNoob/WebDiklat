@@ -17,7 +17,7 @@ use App\Http\Controllers\SesiController;
 |
 */
 
-Route::get('/buat', [FillPDFController::class, 'process']);
+Route::get('/buat/{id}', [FillPDFController::class, 'process']);
 // Route::get('/', function () {
 //     return view('tampilanDepan')->name('tampilanDepan');
 // });
@@ -41,13 +41,15 @@ Route::post('/register-proses', [SesiController::class, 'register_proses'])->nam
 // Route::prefix('admin')->middleware('auth')->group(function () {
 // });
 Route::group(['middleware' => ['auth', 'CekRole:operator']], function () {
-    Route::get('/sertifikat', [DashboardController::class, 'sertifikat'])->name('sertifikat');
-});
-Route::group(['middleware' => ['auth', 'CekRole:operator,peserta']], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pelatihan', [DashboardController::class, 'pelatihan'])->name('pelatihan');
     Route::get('/pelatihan/tambah', [DashboardController::class, 'pelatihan_tambah'])->name('pelatihan.tambah');
     Route::post('/pelatihan/tambah-proses', [DashboardController::class, 'pelatihan_tambah_proses'])->name('pelatihan.tambah-proses');
     Route::get('/pelatihan/{id}/update', [DashboardController::class, 'pelatihan_update'])->name('pelatihan.update');
     Route::post('/pelatihan/{id}/update-proses', [DashboardController::class, 'pelatihan_update_proses'])->name('pelatihan.update-proses');
+    Route::get('/listUser', [SesiController::class, 'listUser'])->name('listUser');
+});
+Route::group(['middleware' => ['auth', 'CekRole:operator,peserta']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/pelatihanUser', [DashboardController::class, 'pelatihanUser'])->name('pelatihanUser');
+    Route::post('/pelatihanUser/create/{training}', [DashboardController::class, 'createpelatihanUser'])->name('createpelatihanUser');
 });
