@@ -14,13 +14,14 @@ class FillPDFController extends Controller
         $data_pelatihan = User::find($id);
         $nama = $data_pelatihan->name;
         $nomor = $data_pelatihan->created_at->format('l, d-M-Y');
+        $id = $data_pelatihan->id;
         $outputfile = public_path() . 'dcc.pdf';
-        $this->fillPDF(public_path() . '/master/dcc.pdf', $outputfile, $nama, $nomor);
+        $this->fillPDF(public_path() . '/master/dcc.pdf', $outputfile, $nama, $nomor, $id);
 
         return response()->file($outputfile);
     }
 
-    public function fillPDF($file, $outputfile, $nama, $nomor)
+    public function fillPDF($file, $outputfile, $nama, $nomor, $id)
     {
         $fpdi = new FPDI;
         $fpdi->setSourceFile($file);
@@ -34,6 +35,7 @@ class FillPDFController extends Controller
         $right1 = 110;
         $name = $nama;
         $nomors = $nomor;
+        $ids = $id;
         // $font = $fpdi->SetFont("courier", "I", 30);
         $fpdi->SetFont("courier", "I", 30);
         $fpdi->SetXY(110, 115);
@@ -41,6 +43,9 @@ class FillPDFController extends Controller
         $fpdi->SetFont("courier", "I", 16);
         $fpdi->SetXY(115, 130);
         $fpdi->Cell(40, 10, $nomors);
+        $fpdi->SetFont("courier", "I", 16);
+        $fpdi->SetXY(115, 85);
+        $fpdi->Cell(40, 10, "B/$ids/Januari/2024");
         // $text = "This is a multi-line text.\nIt can span multiple lines. this it multiline";
 
         // Add a MultiCell to the PDF

@@ -207,16 +207,16 @@
                 <h2 class="mb-5">Pelatihan Bangdiklat</h2>
             </div>
             @foreach($pelatihan as $p)
-            <div class="col-lg-6 col-12 mb-3">
+            <div class="col-lg-4 col-12 mb-3">
                 <div class="product-thumb">
                     <a href="/pelatihan/{{$p->id}}/detail">
-                        <img src="{{ asset('storage/gambar-pelatihan/'.$p->gambar) }}" class="img-fluid product-image" alt="">
+                        <img src="{{ asset('gambar-pelatihan/'.$p->gambar) }}" class="img-fluid product-image" alt="">
                     </a>
 
                     <div class="product-top d-flex">
-                        <span class="product-alert">Low Price</span>
+                        <span class="product-alert me-auto">New Arrival</span>
 
-                        <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
+                        <a href="#" class="bi-heart-fill product-icon"></a>
                     </div>
 
                     <div class="product-info d-flex">
@@ -224,7 +224,6 @@
                             <h5 class="product-title mb-0">
                                 <a href="/pelatihan/{{$p->id}}/detail" class="product-title-link">{{ $p->nama_Pelatihan }}</a>
                             </h5>
-
                             <p class="product-p">Dibuka</p>
                             <p class="product-p">Lokasi : {{ $p->lokasi }}</p>
                             <p class="product-p">Registrasi : {{ $p->tanggal_awal->format('l, d-M-Y') }} - {{ $p->tanggal_berakhir->format('l, d-M-Y') }}</p>
@@ -232,7 +231,7 @@
                             <p class="product-p">Kouta Ex : 50</p>
                         </div>
 
-                        <!-- <small class="product-price text-muted ms-auto mt-auto mb-5">$35</small> -->
+                        <small class="product-price text-muted ms-auto mt-auto mb-5">$25</small>
                     </div>
                 </div>
             </div>

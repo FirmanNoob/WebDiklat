@@ -51,5 +51,6 @@ Route::group(['middleware' => ['auth', 'CekRole:operator']], function () {
 Route::group(['middleware' => ['auth', 'CekRole:operator,peserta']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pelatihanUser', [DashboardController::class, 'pelatihanUser'])->name('pelatihanUser');
+    Route::get('/pelatihanUserDetail', [DashboardController::class, 'pelatihanUserDetail'])->name('pelatihanUserDetail');
     Route::post('/pelatihanUser/create/{training}', [DashboardController::class, 'createpelatihanUser'])->name('createpelatihanUser');
 });

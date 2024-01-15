@@ -26,6 +26,13 @@ class DashboardController extends Controller
         $data = Pelatihan::all();
         return view('admin.pelatihanUser', compact('user', 'data'));
     }
+    public function pelatihanUserDetail()
+    {
+        // $pelatihan = userPelatihan::all();
+        // return view('admin.pelatihanDetail' . compact('pelatihan'));
+        $pelatihan = userPelatihan::all();
+        return view('admin.pelatihanDetail', ['pelatihan' => $pelatihan]);
+    }
 
     public function createpelatihanUser(Request $request, $trainingId)
     {

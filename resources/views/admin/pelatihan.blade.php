@@ -35,7 +35,7 @@
                         <td>{{ $pelatihan->waktu_berakhir }}</td>
                         <td>{{ $pelatihan->kouta }}</td>
                         <!-- <td>{{ asset('/storage/gambar-pelatihan/'. $pelatihan->gambar) }}</td> -->
-                        <td><img src="{{ asset('storage/gambar-pelatihan/'.$pelatihan->gambar) }}" alt="" width="100"></td>
+                        <td><img src="{{ asset('gambar-pelatihan/'.$pelatihan->gambar) }}" alt="" width="100"></td>
                         <td>{{ $pelatihan->deskripsi }}</td>
                         <td>
                             <a href="/pelatihan/{{$pelatihan->id}}/update" class="btn rounded-pill btn-primary">Update</a>

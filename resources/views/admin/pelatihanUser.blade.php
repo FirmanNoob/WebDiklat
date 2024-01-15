@@ -7,11 +7,11 @@
         @foreach($data as $pelatihan)
         <div class="col-md-6 col-lg-4 mb-3">
             <div class="card h-100">
-                <img class="card-img-top" src="{{ asset('storage/gambar-pelatihan/'.$pelatihan->gambar) }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('gambar-pelatihan/'.$pelatihan->gambar) }}" width="374" height="374" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ $pelatihan->nama_Pelatihan }}</h5>
                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        {{ $pelatihan->deskripsi }}
                     </p>
                     <form action="{{ route('createpelatihanUser', $pelatihan->id) }}" method="post">
                         @csrf
