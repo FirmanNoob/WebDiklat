@@ -8,6 +8,8 @@ use App\Models\userPelatihan;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use setasign\Fpdi\Fpdi;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -15,7 +17,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $pelatihan = userPelatihan::all();
+        $pesertas = userPelatihan::where('pelatihan_id')->get();
+
+        return view('admin.index', ['pelatihan' => $pelatihan, 'pesertas' => $pesertas]);
     }
 
 
@@ -24,7 +29,8 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $data = Pelatihan::all();
-        return view('admin.pelatihanUser', compact('user', 'data'));
+        // return view('admin.pelatihanUser', compact('user', 'data'));
+        return view('admin.pelatihanUser', ['user' => $user, 'data' => $data]);
     }
     public function pelatihanUserDetail()
     {
@@ -37,13 +43,27 @@ class DashboardController extends Controller
     public function createpelatihanUser(Request $request, $trainingId)
     {
         $user = auth()->user();
+        // dd('User:', $user, 'Trainings:', $user->trainings, 'Training ID:', $trainingId);
+        // if (!$user->trainings->contains($trainingId)) {
+        //     $userTraining = new userPelatihan(['pelatihan_id' => $trainingId]);
+        //     $user->trainings()->save($userTraining);
 
-        if (!$user->trainings->contains($trainingId)) {
-            $userTraining = new userPelatihan(['pelatihan_id' => $trainingId]);
-            $user->trainings()->save($userTraining);
+        //     return redirect()->route('dashboard')->with('success', 'Anda berhasil mengikuti pelatihan.');
+        // } else {
+        //     return redirect()->route('dashboard')->with('failed', 'Anda sudah terdaftar pada pelatihan ini.');
+        // }
+        // Periksa apakah pengguna sudah mengikuti pelatihan
+        if (!$user->trainings()->where('pelatihan_id', $trainingId)->exists()) {
+            // Jika belum, simpan data pengikutan
+            userPelatihan::create([
+                'user_id'     => $user->id,
+                'pelatihan_id' => $trainingId,
+            ]);
+            return redirect()->route('dashboard')->with('success', 'Anda berhasil mengikuti pelatihan.');
         }
-        return redirect()->route('dashboard')->with('success', 'Anda berhasil mengikuti pelatihan.');
 
+        return redirect()->route('dashboard')->with('failed', 'Anda sudah terdaftar pada pelatihan ini.');
+        // 
 
         // $request->request->add(['user_id', 'pelatihan_id' => auth()->user()->id]);
         // User::create($request->all());
@@ -54,6 +74,13 @@ class DashboardController extends Controller
     {
         $data_pelatihan = Pelatihan::all();
         return view('admin.pelatihan', ['data_pelatihan' => $data_pelatihan]);
+    }
+
+    public function pelatihanDashboard($id)
+    {
+        $data  = Pelatihan::find($id);
+        $pesertas = $data->pesertas;
+        return view('admin.pelatihanDashboard', ['data' => $data, 'pesertas' => $pesertas]);
     }
 
 
@@ -123,10 +150,10 @@ class DashboardController extends Controller
 
 
 
-    public function pelatihan_update(Request $request, $id)
+    public function pelatihan_update($id)
     {
         $data  = Pelatihan::find($id);
-        return view('admin.updatePelatihan', compact('data'));
+        return view('admin.updatePelatihan', ['data' => $data]);
     }
 
 
@@ -160,17 +187,132 @@ class DashboardController extends Controller
         $data['waktu_berakhir']     = $request->waktu_berakhir;
         $data['kouta']     = $request->kouta;
         $data['deskripsi']     = $request->deskripsi;
+        $data['link']     = $request->link;
 
         $find->update($data);
-        return redirect()->route('pelatihan')->with('success', 'Data Pelatihan Berhasil Ditambahkan');
+        return redirect('/pelatihan')->with('success', 'Data Pelatihan Berhasil Ditambahkan');
 
         // return view('admin.updatePelatihan');
     }
 
+    public function pelatihanUserSesi($id)
+    {
+        // $sesiPelatihan = userPelatihan::find($id, auth()->user()->id)->get();
+        $sesiPelatihan = Pelatihan::find($id);
+        // return view('admin.sesiPelatihan', ['sesiPelatihan' => $sesiPelatihan]);
+        return view('admin.sesiPelatihan', compact('sesiPelatihan'));
+    }
+    public function approveAndGenerateCertificate($userId, $trainingId)
+    {
+        // Verifikasi izin operator atau yang memiliki hak akses untuk approve
 
-    // public function pelatihanUser(Request $request)
+        // Set status approve
+        userPelatihan::where('user_id', $userId)
+            ->where('pelatihan_id', $trainingId)
+            ->update(['is_approved' => true]);
+
+        // Generate sertifikat
+        $certificatePath = $this->generateCertificate($userId, $trainingId);
+
+        return redirect()->back()->with('success', 'Peserta diapprove dan sertifikat di-generate');
+    }
+
+    // private function generateCertificate($userId, $trainingId)
     // {
-    //     $request->request->add('');
-    // }
+    //     // Logika untuk generate sertifikat menggunakan FPDI
+    //     $pdf = new Fpdi();
+    //     // ... (aturan dan isi sertifikat)
 
+    //     // Simpan sertifikat ke storage
+    //     $path = "certificates/{$userId}_{$trainingId}_certificate.pdf";
+    //     $pdf->Output('F',$outputfile, storage_path("app/public/{$path}"));
+
+    //     return $path;
+    // }
+    public function generateCertificate($userId, $trainingId)
+    {
+        // Dapatkan informasi pelatihan dan user
+        $userTraining = userPelatihan::where('user_id', $userId)
+            ->where('pelatihan_id', $trainingId)
+            ->with(['user', 'pelatihan'])
+            ->first();
+
+        if (!$userTraining) {
+            abort(404, 'Peserta pelatihan tidak ditemukan');
+        }
+        $userName = $userTraining->user->name;
+        $trainingName = $userTraining->pelatihan->nama_Pelatihan;
+        // Lokasi template sertifikat
+        $templatePath = storage_path('app/public/certificate_templates/template.pdf');
+
+        // Logika untuk generate sertifikat menggunakan FPDI
+        $fpdi = new Fpdi();
+
+        // Tambahkan halaman template ke sertifikat baru
+        $templatePageCount = $fpdi->setSourceFile($templatePath);
+        $templatePageId = $fpdi->importPage(1);
+        $size = $fpdi->getTemplateSize($templatePageId);
+        $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
+        $fpdi->useTemplate($templatePageId);
+
+        // // Hitung lebar nama pengguna dan tentukan posisi tengah
+        $fpdi->SetFont("courier", "I", 30);
+        $userNameWidth = $fpdi->GetStringWidth($userTraining->user->name);
+        $userNameX = 150 - ($userNameWidth / 2);
+        $fpdi->SetXY($userNameX, 105);
+        $fpdi->Cell($userNameWidth, 10, $userTraining->user->name);
+
+        // Set font and size for training name
+        $fpdi->SetFont("courier", "I", 16);
+
+        // Set the maximum width for the training name
+        $maxWidth = 160;
+
+        // Wrap the training name to the next line if it's too long
+        $fpdi->SetXY(70, 115);
+        $fpdi->MultiCell($maxWidth, 10, $userTraining->pelatihan->nama_Pelatihan, 0, 'C');
+
+        // Move the Y position to the end of the multi-cell text
+        // $fpdi->SetY($fpdi->GetY() + 50);
+        // ...
+
+        // Simpan sertifikat ke storage
+        $path = "certificates/{$userId}_{$trainingId}_certificate.pdf";
+        // $path = storage_path('app/public/certificates/1_1_certificate.fpdi');
+
+        $fpdi->Output('F', storage_path("app/public/{$path}"));
+        $userTraining->update(['certificate_path' => $path]);
+
+        return $path;
+    }
+
+    public function coba()
+    {
+        $pelatihan = userPelatihan::all();
+        return view('admin.coba', ['pelatihan' => $pelatihan]);
+    }
+    public function download()
+    {
+        $pelatihan = userPelatihan::all();
+        return view('admin.sertifikatUser', ['pelatihan' => $pelatihan]);
+    }
+    public function downloadCertificate($userId, $trainingId)
+    {
+        $userTraining = userPelatihan::where('user_id', $userId)
+            ->where('pelatihan_id', $trainingId)
+            ->where('is_approved', true)
+            ->first();
+
+        if (!$userTraining) {
+            abort(404, 'Sertifikat tidak ditemukan');
+        }
+        // $certificatePath = storage_path("app/public/certificates/{$userId}_{$trainingId}_certificate.pdf");
+
+        // return response()->download($certificatePath, 'sertifikat.pdf');
+        $certificatePath = $userTraining->certificate_path;
+
+        return new BinaryFileResponse(storage_path("app/public/{$certificatePath}"));
+
+        // return view('admin.sertifikatUser', ['userTraning' => $userTraining]);
+    }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Peserta Tables</h4>
+    <h4 class="fw-bold py-3 mb-4">List Peserta</h4>
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
@@ -25,7 +25,7 @@
                         <td>{{ $listUser->email }}</td>
                         <td>{{ $listUser->role }}</td>
                         <td>
-                            <a href="/buat/{{$listUser->id}}" class="btn rounded-pill btn-danger">Generate</a>
+                            <a href="buat/{{$listUser->id}}" class="btn rounded-pill btn-danger">Generate</a>
                         </td>
                     </tr>
                     @endforeach

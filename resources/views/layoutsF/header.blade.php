@@ -10,9 +10,9 @@
         </a>
 
         <div class="d-lg-none">
-            <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
+            <a href="login" class="bi-person custom-icon me-3"></a>
 
-            <a href="product-detail.html" class="bi-bag custom-icon"></a>
+            <!-- <a href="product-detail.html" class="bi-bag custom-icon"></a> -->
         </div>
 
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -21,11 +21,11 @@
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
+                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="about">About</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/pelatihan">Pelatihan</a>
+                    <a class="nav-link" href="pelatihan">Pelatihan</a>
                 </li>
 
                 <li class="nav-item">
@@ -33,16 +33,16 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="/panduan">Panduan</a>
+                    <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="panduan">Panduan</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
+                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="contact">Contact</a>
                 </li>
             </ul>
 
             <div class="d-none d-lg-block">
-                <a href="/login" class="bi-person custom-icon me-3"></a>
+                <a href="login" class="bi-person custom-icon me-3"></a>
             </div>
         </div>
     </div>

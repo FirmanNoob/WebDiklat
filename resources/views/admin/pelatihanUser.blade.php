@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI Elements /</span> Cards Basic</h4>
+    <h4 class="fw-bold py-3 mb-4">Pelatihan Peserta</h4>
     <div class="row mb-5">
         @foreach($data as $pelatihan)
         <div class="col-md-6 col-lg-4 mb-3">
@@ -16,7 +16,7 @@
                     <form action="{{ route('createpelatihanUser', $pelatihan->id) }}" method="post">
                         @csrf
 
-                        <button type="submit" class="btn btn-outline-primary">Go somewhere</button>
+                        <button type="submit" class="btn btn-outline-primary">Mengikuti Pelatihan</button>
                     </form>
                 </div>
             </div>

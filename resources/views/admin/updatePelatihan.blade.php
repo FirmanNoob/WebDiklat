@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@php
+$id = $data->id
+@endphp
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">Update Pelatihan</h4>
@@ -10,7 +12,7 @@
                 <small class="text-muted float-end">Pelatihan Detail</small>
             </div>
             <div class="card-body">
-                <form action="/pelatihan/{{$data->id}}/update-proses" method="post" enctype="multipart/form-data">
+                <form action="{{ route('pelatihan.update-proses',['id' => $id, 'data' => 'data']) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama Pelatihan</label>
@@ -93,6 +95,15 @@
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span> -->
                                 <textarea id="basic-icon-default-message" name="deskripsi" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $data->deskripsi }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Link</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <!-- <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span> -->
+                                <input type="text" id="basic-icon-default-company" name="link" class="form-control" placeholder="Link" aria-label="ACME Inc." aria-describedby="basic-icon-default-company2" value="{{ $data->link }}" />
                             </div>
                         </div>
                     </div>

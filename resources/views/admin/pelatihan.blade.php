@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+    <h4 class="fw-bold py-3 mb-4">Table Pelatihan Peserta</h4>
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
@@ -13,32 +13,35 @@
                 <thead>
                     <tr>
                         <th>Nama Pelatihan</th>
-                        <th>Lokasi</th>
+                        <th>Peserta</th>
                         <th>Tanggal Awal</th>
-                        <th>Tanggal Berakhir</th>
-                        <th>Waktu Mulai</th>
-                        <th>Waktu Berakhir</th>
-                        <th>Kouta</th>
+                        <th>Lokasi</th>
+                        <!-- <th>Waktu Mulai</th> -->
+                        <!-- <th>Waktu Berakhir</th> -->
+                        <!-- <th>Kouta</th> -->
                         <th>Gambar</th>
-                        <th>Deskripsi</th>
+                        <!-- <th>Deskripsi</th> -->
+                        <!-- <th>Link</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach($data_pelatihan as $pelatihan)
                     <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $pelatihan->nama_Pelatihan }}</strong></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><a href="pelatihan/{{$pelatihan->id}}/dashboard">{{ $pelatihan->nama_Pelatihan }}</a> </td>
+                        <td>{{ $pelatihan->jumlahPeserta() }}</td>
+                        <td>{{ $pelatihan->tanggal_awal->format('l, d-M-Y') }}</td>
                         <td>{{ $pelatihan->lokasi }}</td>
-                        <td>{{ $pelatihan->tanggal_awal }}</td>
-                        <td>{{ $pelatihan->tanggal_berakhir }}</td>
-                        <td>{{ $pelatihan->waktu_mulai }}</td>
-                        <td>{{ $pelatihan->waktu_berakhir }}</td>
-                        <td>{{ $pelatihan->kouta }}</td>
+                        <!-- <td>{{ $pelatihan->tanggal_berakhir->format('l, d-M-Y') }}</td> -->
+                        <!-- <td>{{ $pelatihan->waktu_mulai }}</td> -->
+                        <!-- <td>{{ $pelatihan->waktu_berakhir }}</td> -->
+                        <!-- <td>{{ $pelatihan->kouta }}</td> -->
                         <!-- <td>{{ asset('/storage/gambar-pelatihan/'. $pelatihan->gambar) }}</td> -->
                         <td><img src="{{ asset('gambar-pelatihan/'.$pelatihan->gambar) }}" alt="" width="100"></td>
-                        <td>{{ $pelatihan->deskripsi }}</td>
+                        <!-- <td>{{ $pelatihan->deskripsi }}</td> -->
+                        <!-- <td><a href="{{ $pelatihan->link }}">Test</a></td> -->
                         <td>
-                            <a href="/pelatihan/{{$pelatihan->id}}/update" class="btn rounded-pill btn-primary">Update</a>
+                            <a href="pelatihan/{{$pelatihan->id}}/update" class="btn rounded-pill btn-primary">Update</a>
                             <a href="/pelatihan/{{$pelatihan->id}}/delete" class="btn rounded-pill btn-danger">delete</a>
                         </td>
                     </tr>

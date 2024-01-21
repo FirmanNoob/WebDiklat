@@ -1,7 +1,7 @@
 @extends('layoutsF.master')
 
 @section('content')
-<header class="site-header section-padding d-flex justify-content-center align-items-center">
+<!-- <header class="site-header section-padding d-flex justify-content-center align-items-center">
     <div class="container">
         <div class="row">
 
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-</header>
+</header> -->
 
 <section class="faq section-padding">
     <div class="container">

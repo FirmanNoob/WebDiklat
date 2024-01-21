@@ -11,7 +11,7 @@ class userPelatihan extends Model
 {
     use HasFactory;
     protected $table = 'user_pelatihan';
-    protected $fillable = ['user_id', 'pelatihan_id'];
+    protected $fillable = ['user_id', 'pelatihan_id', 'is_approved', 'certificate_path'];
 
     public function pelatihan()
     {

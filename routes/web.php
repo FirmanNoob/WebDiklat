@@ -17,7 +17,7 @@ use App\Http\Controllers\SesiController;
 |
 */
 
-Route::get('/buat/{id}', [FillPDFController::class, 'process']);
+Route::get('buat/{id}', [FillPDFController::class, 'process']);
 // Route::get('/', function () {
 //     return view('tampilanDepan')->name('tampilanDepan');
 // });
@@ -42,15 +42,21 @@ Route::post('/register-proses', [SesiController::class, 'register_proses'])->nam
 // });
 Route::group(['middleware' => ['auth', 'CekRole:operator']], function () {
     Route::get('/pelatihan', [DashboardController::class, 'pelatihan'])->name('pelatihan');
+    Route::get('/pelatihan/{id}/dashboard', [DashboardController::class, 'pelatihanDashboard'])->name('pelatihanDashboard');
     Route::get('/pelatihan/tambah', [DashboardController::class, 'pelatihan_tambah'])->name('pelatihan.tambah');
     Route::post('/pelatihan/tambah-proses', [DashboardController::class, 'pelatihan_tambah_proses'])->name('pelatihan.tambah-proses');
     Route::get('/pelatihan/{id}/update', [DashboardController::class, 'pelatihan_update'])->name('pelatihan.update');
     Route::post('/pelatihan/{id}/update-proses', [DashboardController::class, 'pelatihan_update_proses'])->name('pelatihan.update-proses');
     Route::get('/listUser', [SesiController::class, 'listUser'])->name('listUser');
+    Route::post('/training/approve-certificate/{userId}/{trainingId}', [DashboardController::class, 'approveAndGenerateCertificate'])->name('approveAndGenerateCertificate');
 });
 Route::group(['middleware' => ['auth', 'CekRole:operator,peserta']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pelatihanUser', [DashboardController::class, 'pelatihanUser'])->name('pelatihanUser');
     Route::get('/pelatihanUserDetail', [DashboardController::class, 'pelatihanUserDetail'])->name('pelatihanUserDetail');
-    Route::post('/pelatihanUser/create/{training}', [DashboardController::class, 'createpelatihanUser'])->name('createpelatihanUser');
+    Route::get('/pelatihanUserSesi/{id}', [DashboardController::class, 'pelatihanUserSesi'])->name('pelatihanUserSesi');
+    Route::get('/coba', [DashboardController::class, 'coba'])->name('coba');
+    Route::post('/pelatihanUser/create/{trainingId}', [DashboardController::class, 'createpelatihanUser'])->name('createpelatihanUser');
+    Route::get('/download', [DashboardController::class, 'download'])->name('download');
+    Route::get('/download-certificate/{userId}/{trainingId}', [DashboardController::class, 'downloadCertificate'])->name('downloadCertificate');
 });

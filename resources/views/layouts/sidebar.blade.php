@@ -56,8 +56,8 @@
 
         <li class="menu-item {{ Request::is('pelatihanUser') ? 'active' : '' }}">
             <a href="{{ route('pelatihanUser') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">pelatihanUser</div>
+                <i class="menu-icon tf-icons bx bx-library"></i>
+                <div data-i18n="Analytics">Pelatihan Peserta</div>
             </a>
         </li>
         <li class="menu-item {{ Request::is('pelatihanUserDetail') ? 'active' : '' }}">
@@ -70,7 +70,7 @@
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Layouts">Pelatihan</div>
             </a>
 
@@ -90,8 +90,8 @@
         </li>
         <li class="menu-item {{ Request::is('listUser') ? 'active' : '' }}">
             <a href="{{ route('listUser') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">listUser</div>
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Analytics">List Peserta</div>
             </a>
         </li>
 

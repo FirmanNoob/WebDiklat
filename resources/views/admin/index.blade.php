@@ -2,80 +2,38 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                            <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                your profile.
-                            </p>
+    <h4 class="fw-bold py-3 mb-4">Riwayat Pelatihan Saya</h4>
 
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                            <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-            <div class="card">
-                <div class="row row-bordered g-0">
-                    <div class="col-md-8">
-                        <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                        <div id="totalRevenueChart" class="px-2"></div>
-                    </div>
+    <div class="row mb-5">
+        @foreach(auth()->user()->trainings as $data)
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="row g-0">
                     <div class="col-md-4">
+                        <img class="card-img card-img-left" src="{{ asset('gambar-pelatihan/'.$data->pelatihan->gambar) }}" alt="Card image" />
+                    </div>
+                    <div class="col-md-8">
                         <div class="card-body">
-                            <div class="text-center">
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        2022
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="growthChart"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-                        <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                            <div class="d-flex">
-                                <div class="me-2">
-                                    <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <small>2022</small>
-                                    <h6 class="mb-0">$32.5k</h6>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="me-2">
-                                    <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <small>2021</small>
-                                    <h6 class="mb-0">$41.2k</h6>
-                                </div>
-                            </div>
+                            <h5 class="card-title">{{ $data->pelatihan->nama_Pelatihan }} <br><span class="text-muted fw-light mb-3">Lokasi : {{ $data->pelatihan->lokasi }}</span></h5>
+                            <p class="card-text">
+                                Jadwal : {{ $data->pelatihan->tanggal_awal->format('l, d-M-Y') }} - {{ $data->pelatihan->tanggal_berakhir->format('l, d-M-Y') }}
+                            </p>
+                            <p class="card-text">
+                                <a href="{{ $data->pelatihan->link }}">Klik Disini</a>
+                            </p>
+                            <p><b>Harga :</b> Gratis</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <a href="pelatihanUserSesi/{{$data->pelatihan->id}}" class="btn rounded-pill btn-primary">Detail</a>
+                            <!-- <a href="{{ route('downloadCertificate', ['userId' => auth()->user()->id, 'trainingId' => $data->pelatihan_id]) }}" class="btn btn-primary">Download Sertifikat</a> -->
+                            @if ($data->is_approved)
+                            <a href="{{ route('downloadCertificate', ['userId' => $data->user_id, 'trainingId' => $data->pelatihan_id]) }}" class="btn btn-success">Download Sertifikat</a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--/ Total Revenue -->
+        @endforeach
 
     </div>
 </div>
