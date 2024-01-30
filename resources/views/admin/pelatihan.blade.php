@@ -6,8 +6,16 @@
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
-        <h5 class="card-header">Table Basic</h5>
+        <!-- <h5 class="card-header">Table Basic</h5> -->
         <!-- <button type="button" class="btn btn-primary">Primary</button> --><!-- Button trigger modal -->
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="card-header">Table Basic</h5>
+            </div>
+            <div class="col-md-6 mt-4 text-end">
+                <button type="button" class="btn btn-primary">Primary</button>
+            </div>
+        </div>
         <div class="table-responsive text-nowrap">
             <table class="table" id="myTable">
                 <thead>

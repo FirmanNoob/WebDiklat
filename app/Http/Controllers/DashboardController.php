@@ -28,7 +28,9 @@ class DashboardController extends Controller
     public function pelatihanUser()
     {
         $user = auth()->user();
-        $data = Pelatihan::all();
+        // $data = Pelatihan::all();
+        $data = Pelatihan::orderBy('created_at', 'desc')->get();
+
         // return view('admin.pelatihanUser', compact('user', 'data'));
         return view('admin.pelatihanUser', ['user' => $user, 'data' => $data]);
     }
@@ -121,7 +123,7 @@ class DashboardController extends Controller
                 'tanggal_berakhir'    =>  'required',
                 'waktu_mulai'    =>  'required',
                 'waktu_berakhir'    =>  'required',
-                'kouta'    =>  'required',
+                // 'kouta'    =>  'required',
                 'gambar'    =>  'required|mimes:png,jpg,jpeg|max:2048',
                 'deskripsi'    =>  'required',
 
@@ -140,10 +142,9 @@ class DashboardController extends Controller
         $data['tanggal_berakhir']     = $request->tanggal_berakhir;
         $data['waktu_mulai']     = $request->waktu_mulai;
         $data['waktu_berakhir']     = $request->waktu_berakhir;
-        $data['kouta']     = $request->kouta;
         $data['gambar']     = $filename;
         $data['deskripsi']     = $request->deskripsi;
-        // dd($data);
+        $data['link']     = $request->link;
         Pelatihan::create($data);
         return redirect()->route('pelatihan')->with('success', 'Data Pelatihan Berhasil Ditambahkan');
     }

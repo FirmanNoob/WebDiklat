@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth', 'CekRole:operator']], function () {
     Route::get('/pelatihan/{id}/update', [DashboardController::class, 'pelatihan_update'])->name('pelatihan.update');
     Route::post('/pelatihan/{id}/update-proses', [DashboardController::class, 'pelatihan_update_proses'])->name('pelatihan.update-proses');
     Route::get('/listUser', [SesiController::class, 'listUser'])->name('listUser');
+    Route::get('/profil', [SesiController::class, 'profil'])->name('profil');
     Route::post('/training/approve-certificate/{userId}/{trainingId}', [DashboardController::class, 'approveAndGenerateCertificate'])->name('approveAndGenerateCertificate');
 });
 Route::group(['middleware' => ['auth', 'CekRole:operator,peserta']], function () {
@@ -59,4 +60,6 @@ Route::group(['middleware' => ['auth', 'CekRole:operator,peserta']], function ()
     Route::post('/pelatihanUser/create/{trainingId}', [DashboardController::class, 'createpelatihanUser'])->name('createpelatihanUser');
     Route::get('/download', [DashboardController::class, 'download'])->name('download');
     Route::get('/download-certificate/{userId}/{trainingId}', [DashboardController::class, 'downloadCertificate'])->name('downloadCertificate');
+    Route::get('/profile', [SesiController::class, 'profil'])->name('profile');
+    Route::patch('/profile/update', [SesiController::class, 'updateProfile'])->name('profile.update');
 });

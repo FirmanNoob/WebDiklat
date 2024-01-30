@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="slick-slideshow">
-    <div class="slick-custom">
+    <!-- <div class="slick-custom">
         <img src="https://diklat.rspaldrramelan.com/assets/gambar/user/banner.svg" class="img-fluid" alt="">
 
         <div class="slick-bottom">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="slick-custom">
         <img src="{{ asset('depan/images/PANORAMA GEDUNG MTH.jpg') }}" class="img-fluid" alt="">
@@ -109,7 +109,7 @@
                                     </p> -->
 
                                     <div class="mt-2 mt-lg-auto">
-                                        <a href="about.html" class="custom-link mb-2">
+                                        <a href="{{ route('about') }}" class="custom-link mb-2">
                                             Learn more about us
                                             <i class="bi-arrow-right ms-2"></i>
                                         </a>

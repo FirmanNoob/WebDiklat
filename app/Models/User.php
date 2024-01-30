@@ -24,8 +24,27 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'nik',
+        'jabatan',
+        'nip',
+        'str',
+        'jkelamin',
+        'tlahir',
+        'agama',
+        'pterakhir',
+        'pangkat',
+        'alamat',
+        'nohp',
+        'avatar',
     ];
 
+    public function getAvatar()
+    {
+        if (!$this->avatar) {
+            return asset('images/user.png');
+        }
+        return asset('images/' . $this->avatar);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

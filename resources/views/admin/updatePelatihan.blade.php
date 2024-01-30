@@ -39,7 +39,7 @@ $id = $data->id
                                 <!-- <span class="input-group-text"><i class="bx bx-envelope"></i></span> -->
                                 <!-- <input type="datetime-local" id="basic-icon-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-icon-default-email2" /> -->
                                 <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
-                                <input class="form-control" type="datetime-local" name="tanggal_awal" value="2021-06-18T12:30:00" id="html5-datetime-local-input">
+                                <input class="form-control" type="datetime-local" name="tanggal_awal" value="{{ $data->tanggal_awal }}" id="html5-datetime-local-input">
                             </div>
                             <div class="form-text">You can use letters, numbers & periods</div>
                         </div>
@@ -49,7 +49,7 @@ $id = $data->id
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
-                                <input class="form-control" type="datetime-local" name="tanggal_berakhir" value="2021-06-18T12:30:00" id="html5-datetime-local-input">
+                                <input class="form-control" type="datetime-local" name="tanggal_berakhir" value="{{ $data->tanggal_berakhir }}" id="html5-datetime-local-input">
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ $id = $data->id
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
-                                <input class="form-control" type="time" name="waktu_mulai" value="12:30:00" id="html5-time-input">
+                                <input class="form-control" type="time" name="waktu_mulai" value="{{ $data->waktu_mulai }}" id="html5-time-input">
                             </div>
                         </div>
                     </div>
@@ -67,19 +67,18 @@ $id = $data->id
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
-                                <input class="form-control" type="time" name="waktu_berakhir" value="12:30:00" id="html5-time-input">
+                                <input class="form-control" type="time" name="waktu_berakhir" value="{{ $data->waktu_berakhir }}" id="html5-time-input">
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                         <label class="col-sm-2 form-label" for="basic-icon-default-phone">Limit Peserta</label>
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
-                                <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
                                 <input class="form-control" type="number" name="kouta" value="{{ $data->kouta }}" id="html5-number-input">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label" for="basic-icon-default-phone">Gambar</label>
                         <div class="col-sm-10">

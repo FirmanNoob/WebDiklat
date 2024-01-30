@@ -34,10 +34,7 @@
                         <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Tanggal Awal</label>
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
-                                <!-- <span class="input-group-text"><i class="bx bx-envelope"></i></span> -->
-                                <!-- <input type="datetime-local" id="basic-icon-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-icon-default-email2" /> -->
-                                <!-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> -->
-                                <input class="form-control" type="datetime-local" name="tanggal_awal" value="2021-06-18T12:30:00" id="html5-datetime-local-input">
+                                <input class="form-control" type="datetime-local" name="tanggal_awal" id="html5-datetime-local-input">
                             </div>
                             <div class="form-text">You can use letters, numbers & periods</div>
                         </div>
@@ -46,8 +43,7 @@
                         <label class="col-sm-2 form-label" for="basic-icon-default-phone">Tanggal Berakhir</label>
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
-                                <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
-                                <input class="form-control" type="datetime-local" name="tanggal_berakhir" value="2021-06-18T12:30:00" id="html5-datetime-local-input">
+                                <input class="form-control" type="datetime-local" name="tanggal_berakhir" id="html5-datetime-local-input">
                             </div>
                         </div>
                     </div>
@@ -69,15 +65,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                         <label class="col-sm-2 form-label" for="basic-icon-default-phone">Limit Peserta</label>
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
-                                <!-- <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span> -->
                                 <input class="form-control" type="number" name="kouta" value="18" id="html5-number-input">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label" for="basic-icon-default-phone">Gambar</label>
                         <div class="col-sm-10">
@@ -92,7 +87,16 @@
                         <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                                 <!-- <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span> -->
-                                <textarea id="basic-icon-default-message" name="deskripsi" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                <textarea id="basic-icon-default-message" name="deskripsi" class="form-control" placeholder="Deskripsi" aria-label="Deskripsi" aria-describedby="basic-icon-default-message2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Link</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <!-- <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span> -->
+                                <input type="text" id="basic-icon-default-company" name="link" class="form-control" placeholder="link" aria-label="ACME Inc." aria-describedby="basic-icon-default-company2" />
                             </div>
                         </div>
                     </div>

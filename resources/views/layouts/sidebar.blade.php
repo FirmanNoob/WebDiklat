@@ -35,7 +35,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">SIRO</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -60,10 +60,16 @@
                 <div data-i18n="Analytics">Pelatihan Peserta</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::is('pelatihanUserDetail') ? 'active' : '' }}">
+        <!-- <li class="menu-item {{ Request::is('pelatihanUserDetail') ? 'active' : '' }}">
             <a href="{{ route('pelatihanUserDetail') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">pelatihanUserDetail</div>
+            </a>
+        </li> -->
+        <li class="menu-item {{ Request::is('profile') ? 'active' : '' }}">
+            <a href="{{ route('profile') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx bxs-user"></i>
+                <div data-i18n="Analytics">Profile</div>
             </a>
         </li>
         @if (auth()->user()->role=="operator")
